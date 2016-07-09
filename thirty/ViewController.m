@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import <Firebase/Firebase.h>
 
 @interface ViewController ()
 
@@ -16,8 +17,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Create a reference to a Firebase database URL
+    Firebase *myRootRef = [[Firebase alloc] initWithUrl:@"https://thirty-8fabc.firebaseio.com/"];
+    // Write data to Firebase
+    [myRootRef setValue:@"Do you have data? You'll love Firebase."];
+    // Read data and react to changes
+    [myRootRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSLog(@"%@ -> %@", snapshot.key, snapshot.value);
+    }];
     [self.mainPlayer loadWithVideoId:@"M7lc1UVf-VE"];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {

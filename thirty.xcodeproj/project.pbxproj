@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2521A9E91D31872D00BEDCA2 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2521A9E81D31872D00BEDCA2 /* Firebase.framework */; };
+		2521A9EB1D31877100BEDCA2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2521A9EA1D31877100BEDCA2 /* Security.framework */; };
+		2521A9ED1D31877700BEDCA2 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2521A9EC1D31877700BEDCA2 /* CFNetwork.framework */; };
+		2521A9EF1D31878200BEDCA2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2521A9EE1D31878200BEDCA2 /* SystemConfiguration.framework */; };
+		2521A9F21D31879500BEDCA2 /* libicucore.A.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2521A9F01D31879500BEDCA2 /* libicucore.A.tbd */; };
+		2521A9F31D31879500BEDCA2 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2521A9F11D31879500BEDCA2 /* libicucore.tbd */; };
+		2521A9F71D3187A200BEDCA2 /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2521A9F41D3187A200BEDCA2 /* libc++.1.tbd */; };
+		2521A9F81D3187A200BEDCA2 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2521A9F51D3187A200BEDCA2 /* libc++.tbd */; };
+		2521A9F91D3187A200BEDCA2 /* libc++abi.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2521A9F61D3187A200BEDCA2 /* libc++abi.tbd */; };
 		2582D8541D3140610097750A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2582D8531D3140610097750A /* main.m */; };
 		2582D8571D3140610097750A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2582D8561D3140610097750A /* AppDelegate.m */; };
 		2582D85F1D3140610097750A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2582D85E1D3140610097750A /* Assets.xcassets */; };
@@ -39,6 +48,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2521A9E81D31872D00BEDCA2 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
+		2521A9EA1D31877100BEDCA2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		2521A9EC1D31877700BEDCA2 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		2521A9EE1D31878200BEDCA2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		2521A9F01D31879500BEDCA2 /* libicucore.A.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.A.tbd; path = usr/lib/libicucore.A.tbd; sourceTree = SDKROOT; };
+		2521A9F11D31879500BEDCA2 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		2521A9F41D3187A200BEDCA2 /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
+		2521A9F51D3187A200BEDCA2 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		2521A9F61D3187A200BEDCA2 /* libc++abi.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++abi.tbd"; path = "usr/lib/libc++abi.tbd"; sourceTree = SDKROOT; };
 		2582D84F1D3140610097750A /* thirty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = thirty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2582D8531D3140610097750A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2582D8551D3140610097750A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -68,6 +86,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2521A9F71D3187A200BEDCA2 /* libc++.1.tbd in Frameworks */,
+				2521A9F81D3187A200BEDCA2 /* libc++.tbd in Frameworks */,
+				2521A9F91D3187A200BEDCA2 /* libc++abi.tbd in Frameworks */,
+				2521A9F21D31879500BEDCA2 /* libicucore.A.tbd in Frameworks */,
+				2521A9F31D31879500BEDCA2 /* libicucore.tbd in Frameworks */,
+				2521A9EF1D31878200BEDCA2 /* SystemConfiguration.framework in Frameworks */,
+				2521A9ED1D31877700BEDCA2 /* CFNetwork.framework in Frameworks */,
+				2521A9EB1D31877100BEDCA2 /* Security.framework in Frameworks */,
+				2521A9E91D31872D00BEDCA2 /* Firebase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +118,15 @@
 		2582D8461D3140610097750A = {
 			isa = PBXGroup;
 			children = (
+				2521A9F41D3187A200BEDCA2 /* libc++.1.tbd */,
+				2521A9F51D3187A200BEDCA2 /* libc++.tbd */,
+				2521A9F61D3187A200BEDCA2 /* libc++abi.tbd */,
+				2521A9F01D31879500BEDCA2 /* libicucore.A.tbd */,
+				2521A9F11D31879500BEDCA2 /* libicucore.tbd */,
+				2521A9EE1D31878200BEDCA2 /* SystemConfiguration.framework */,
+				2521A9EC1D31877700BEDCA2 /* CFNetwork.framework */,
+				2521A9EA1D31877100BEDCA2 /* Security.framework */,
+				2521A9E81D31872D00BEDCA2 /* Firebase.framework */,
 				2582D8511D3140610097750A /* thirty */,
 				2582D86B1D3140610097750A /* thirtyTests */,
 				2582D8761D3140610097750A /* thirtyUITests */,
@@ -430,6 +466,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = thirty/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.karthikravindrarao.thirty;
@@ -441,6 +481,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = thirty/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.karthikravindrarao.thirty;
@@ -513,6 +557,7 @@
 				2582D87E1D3140610097750A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2582D87F1D3140610097750A /* Build configuration list for PBXNativeTarget "thirtyTests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +566,7 @@
 				2582D8811D3140610097750A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2582D8821D3140610097750A /* Build configuration list for PBXNativeTarget "thirtyUITests" */ = {
 			isa = XCConfigurationList;
@@ -529,6 +575,7 @@
 				2582D8841D3140610097750A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
