@@ -24,7 +24,6 @@
     [myRootRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         NSLog(@"%@ -> %@", snapshot.key, snapshot.value);
     }];
-    [self.mainPlayer loadWithVideoId:@"M7lc1UVf-VE"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,34 +32,41 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 100;
+    if (section == 0) {
+        return 1;
+    }
+    else {
+       return 10;
+    }
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myCell"];
-    if (!cell)
+    if (indexPath.section == 0) {
+        FirstCell *firstCell = [tableView dequeueReusableCellWithIdentifier:@"myFirstCell" ];
+        if (firstCell == nil) {
+            [tableView registerNib:[UINib nibWithNibName:@"FirstCell" bundle:nil] forCellReuseIdentifier:@"myFirstCell"];
+            firstCell = [tableView dequeueReusableCellWithIdentifier:@"myFirstCell"];
+        }
+        [firstCell.firstCellView loadWithVideoId:@"CcRgLoq_z3A"];
+        return firstCell;
+
+    }
+    else {
+    TableViewCell *cell = (TableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"myCell"];
+    if (cell == nil)
     {
         [tableView registerNib:[UINib nibWithNibName:@"TableViewCell" bundle:nil] forCellReuseIdentifier:@"myCell"];
         cell = [tableView dequeueReusableCellWithIdentifier:@"myCell"];
     }
     [cell.playerView loadWithVideoId:@"M7lc1UVf-VE"];
     
-    FirstCell *firstCell = [tableView dequeueReusableCellWithIdentifier:@"myFirstCell"];
-    if (!firstCell) {
-        [tableView registerNib:[UINib nibWithNibName:@"FirstCell" bundle:nil] forCellReuseIdentifier:@"myFirstCell"];
-        firstCell = [tableView dequeueReusableCellWithIdentifier:@"myFirstCell"];
-    }
-    [firstCell.firstCellView loadWithVideoId:@"CcRgLoq_z3A"];
-    if (indexPath.row == 0) {
-        return firstCell;
-    }
-    else {
-       return cell;
+        return cell;
     }
 }
 
@@ -68,7 +74,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return 200;
+        return 300;
     }
     else{
         return 150;

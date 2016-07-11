@@ -13,6 +13,4 @@
 
 @interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
-@property(nonatomic, strong) IBOutlet YTPlayerView *mainPlayer;
-
 @end
