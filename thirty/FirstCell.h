@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YTPlayerView.h"
 
 @interface FirstCell : UITableViewCell
+
+@property(nonatomic, strong) IBOutlet YTPlayerView *firstCellView;
+
 
 @end

@@ -28,6 +28,8 @@
 		2582D8911D3140820097750A /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2582D88A1D3140820097750A /* TableViewCell.xib */; };
 		2582D8921D3140820097750A /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2582D88C1D3140820097750A /* YTPlayerView.m */; };
 		2582D8931D3140820097750A /* Assets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2582D88D1D3140820097750A /* Assets.bundle */; };
+		25FB2D161D337F580095C40D /* FirstCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25FB2D141D337F580095C40D /* FirstCell.m */; };
+		25FB2D171D337F580095C40D /* FirstCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25FB2D151D337F580095C40D /* FirstCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,9 @@
 		2582D88B1D3140820097750A /* YTPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTPlayerView.h; sourceTree = "<group>"; };
 		2582D88C1D3140820097750A /* YTPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTPlayerView.m; sourceTree = "<group>"; };
 		2582D88D1D3140820097750A /* Assets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Assets.bundle; sourceTree = "<group>"; };
+		25FB2D131D337F580095C40D /* FirstCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstCell.h; sourceTree = "<group>"; };
+		25FB2D141D337F580095C40D /* FirstCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstCell.m; sourceTree = "<group>"; };
+		25FB2D151D337F580095C40D /* FirstCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +157,9 @@
 				2582D8851D3140820097750A /* Main.storyboard */,
 				2582D8861D3140820097750A /* ViewController.h */,
 				2582D8871D3140820097750A /* ViewController.m */,
+				25FB2D131D337F580095C40D /* FirstCell.h */,
+				25FB2D141D337F580095C40D /* FirstCell.m */,
+				25FB2D151D337F580095C40D /* FirstCell.xib */,
 				2582D8881D3140820097750A /* TableViewCell.h */,
 				2582D8891D3140820097750A /* TableViewCell.m */,
 				2582D88A1D3140820097750A /* TableViewCell.xib */,
@@ -302,6 +310,7 @@
 				2582D88E1D3140820097750A /* Main.storyboard in Resources */,
 				2582D8911D3140820097750A /* TableViewCell.xib in Resources */,
 				2582D8621D3140610097750A /* LaunchScreen.storyboard in Resources */,
+				25FB2D171D337F580095C40D /* FirstCell.xib in Resources */,
 				2582D85F1D3140610097750A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,6 +338,7 @@
 			files = (
 				2582D88F1D3140820097750A /* ViewController.m in Sources */,
 				2582D8901D3140820097750A /* TableViewCell.m in Sources */,
+				25FB2D161D337F580095C40D /* FirstCell.m in Sources */,
 				2582D8571D3140610097750A /* AppDelegate.m in Sources */,
 				2582D8921D3140820097750A /* YTPlayerView.m in Sources */,
 				2582D8541D3140610097750A /* main.m in Sources */,

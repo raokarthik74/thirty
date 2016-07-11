@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import <Firebase/Firebase.h>
 
 @interface ViewController ()
 
@@ -51,13 +50,30 @@
     }
     [cell.playerView loadWithVideoId:@"M7lc1UVf-VE"];
     
-    return cell;
+    FirstCell *firstCell = [tableView dequeueReusableCellWithIdentifier:@"myFirstCell"];
+    if (!firstCell) {
+        [tableView registerNib:[UINib nibWithNibName:@"FirstCell" bundle:nil] forCellReuseIdentifier:@"myFirstCell"];
+        firstCell = [tableView dequeueReusableCellWithIdentifier:@"myFirstCell"];
+    }
+    [firstCell.firstCellView loadWithVideoId:@"CcRgLoq_z3A"];
+    if (indexPath.row == 0) {
+        return firstCell;
+    }
+    else {
+       return cell;
+    }
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 150;
+    if (indexPath.row == 0) {
+        return 200;
+    }
+    else{
+        return 150;
+    }
+    
 }
 
 
