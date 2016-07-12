@@ -14,5 +14,6 @@
 @interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property NSString * mainUrl;
+@property Firebase *myRootRef;
 
 @end

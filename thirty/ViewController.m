@@ -17,17 +17,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.mainUrl = @"8wF-mKMsynE";
-        Firebase *myRootRef = [[Firebase alloc] initWithUrl:@"https://thirty-8fabc.firebaseio.com/"];
-        [myRootRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-            NSLog(@"%@ -> %@", snapshot.key, snapshot.value);
-            NSDictionary *urlDict = snapshot.value;
-            self.mainUrl = urlDict[@"firsturl"];
-            NSLog(@"first url %@", self.mainUrl );
-            NSArray *remainingURLs = urlDict[@"urls"];
-            NSLog(@"urls %@", urlDict[@"urls"]);
-        }];
-}
+    self.myRootRef = [[Firebase alloc] initWithUrl:@"https://thirty-8fabc.firebaseio.com/"];
+    }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -43,22 +34,31 @@
         return 1;
     }
     else {
-//        NSUInteger size = [self.remainingURLs count];
-       return 12;
+        [self.myRootRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+            NSLog(@"%@ -> %@", snapshot.key, snapshot.value);
+            NSDictionary *urlDict = snapshot.value;
+            NSArray *remainingURLs = urlDict[@"urls"];
+            NSLog(@"urls %@", urlDict[@"urls"]);
+            self.count =  [remainingURLs count];
+        }];
+        return self.count;
     }
-    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     if (indexPath.section == 0) {
         FirstCell *firstCell = [tableView dequeueReusableCellWithIdentifier:@"myFirstCell" ];
         if (firstCell == nil) {
             [tableView registerNib:[UINib nibWithNibName:@"FirstCell" bundle:nil] forCellReuseIdentifier:@"myFirstCell"];
             firstCell = [tableView dequeueReusableCellWithIdentifier:@"myFirstCell"];
         }
-        NSLog(@"check");
-        [firstCell.firstCellView loadWithVideoId:self.mainUrl];
+        [self.myRootRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+            NSLog(@"%@ -> %@", snapshot.key, snapshot.value);
+            NSDictionary *urlDict = snapshot.value;
+            self.mainUrl = urlDict[@"firsturl"];
+            NSLog(@"first url %@", self.mainUrl );
+            [firstCell.firstCellView loadWithVideoId:self.mainUrl];
+                    }];
         return firstCell;
 
     }
@@ -69,7 +69,14 @@
         [tableView registerNib:[UINib nibWithNibName:@"TableViewCell" bundle:nil] forCellReuseIdentifier:@"myCell"];
         cell = [tableView dequeueReusableCellWithIdentifier:@"myCell"];
     }
-    [cell.playerView loadWithVideoId:@"8wF-mKMsynE"];
+        [self.myRootRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+            NSLog(@"%@ -> %@", snapshot.key, snapshot.value);
+            NSDictionary *urlDict = snapshot.value;
+            NSArray *remainingURLs = urlDict[@"urls"];
+            NSLog(@"urls %@", urlDict[@"urls"]);
+            [cell.playerView loadWithVideoId:remainingURLs[indexPath.row]];
+        }];
+    
         return cell;
     }
 }
