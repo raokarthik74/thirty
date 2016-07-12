@@ -14,16 +14,19 @@
 
 @implementation ViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Create a reference to a Firebase database URL
-    Firebase *myRootRef = [[Firebase alloc] initWithUrl:@"https://thirty-8fabc.firebaseio.com/"];
-    // Write data to Firebase
-    [myRootRef setValue:@"Do you have data? You'll love Firebase."];
-    // Read data and react to changes
-    [myRootRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        NSLog(@"%@ -> %@", snapshot.key, snapshot.value);
-    }];
+    self.mainUrl = @"8wF-mKMsynE";
+        Firebase *myRootRef = [[Firebase alloc] initWithUrl:@"https://thirty-8fabc.firebaseio.com/"];
+        [myRootRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+            NSLog(@"%@ -> %@", snapshot.key, snapshot.value);
+            NSDictionary *urlDict = snapshot.value;
+            self.mainUrl = urlDict[@"firsturl"];
+            NSLog(@"first url %@", self.mainUrl );
+            NSArray *remainingURLs = urlDict[@"urls"];
+            NSLog(@"urls %@", urlDict[@"urls"]);
+        }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,7 +43,8 @@
         return 1;
     }
     else {
-       return 10;
+//        NSUInteger size = [self.remainingURLs count];
+       return 12;
     }
     
 }
@@ -53,7 +57,8 @@
             [tableView registerNib:[UINib nibWithNibName:@"FirstCell" bundle:nil] forCellReuseIdentifier:@"myFirstCell"];
             firstCell = [tableView dequeueReusableCellWithIdentifier:@"myFirstCell"];
         }
-        [firstCell.firstCellView loadWithVideoId:@"CcRgLoq_z3A"];
+        NSLog(@"check");
+        [firstCell.firstCellView loadWithVideoId:self.mainUrl];
         return firstCell;
 
     }
@@ -64,17 +69,18 @@
         [tableView registerNib:[UINib nibWithNibName:@"TableViewCell" bundle:nil] forCellReuseIdentifier:@"myCell"];
         cell = [tableView dequeueReusableCellWithIdentifier:@"myCell"];
     }
-    [cell.playerView loadWithVideoId:@"M7lc1UVf-VE"];
-    
+    [cell.playerView loadWithVideoId:@"8wF-mKMsynE"];
         return cell;
     }
 }
 
 
+
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
-        return 300;
+    if (indexPath.section == 0) {
+        return 250;
     }
     else{
         return 150;

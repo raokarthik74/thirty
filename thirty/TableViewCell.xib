@@ -9,29 +9,58 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myCell" rowHeight="150" id="KGk-i7-Jjw" customClass="TableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="149.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucc-Oh-NQj">
+                        <rect key="frame" x="150" y="68" width="154" height="53"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="53" id="1x9-T2-9Am"/>
+                            <constraint firstAttribute="width" constant="154" id="LGf-gI-3RV"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5CC-Ql-gNk">
+                        <rect key="frame" x="150" y="16" width="154" height="70"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="154" id="Hp6-hG-aWE"/>
+                            <constraint firstAttribute="height" constant="70" id="P2A-OG-bJz"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y8O-78-ZAB" customClass="YTPlayerView">
-                        <rect key="frame" x="0.0" y="0.0" width="283" height="100"/>
+                        <rect key="frame" x="8" y="8" width="133.5" height="133.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="134" id="NFV-54-QsY"/>
+                            <constraint firstAttribute="height" constant="134" id="TP8-dy-HO4"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="133.5" id="XeZ-RD-oxc"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="133.5" id="k4l-6C-VLi"/>
+                        </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottomMargin" secondItem="Y8O-78-ZAB" secondAttribute="bottom" constant="-8.5" id="VBK-UT-Py7"/>
-                    <constraint firstItem="Y8O-78-ZAB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="cC0-4h-eDp"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Y8O-78-ZAB" secondAttribute="trailing" constant="309" id="g9Q-iq-Am7"/>
-                    <constraint firstItem="Y8O-78-ZAB" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="gPc-6K-2Ua"/>
-                    <constraint firstItem="Y8O-78-ZAB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="mch-tA-F1e"/>
+                    <constraint firstItem="Y8O-78-ZAB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="BZ0-Kd-bIN"/>
+                    <constraint firstItem="ucc-Oh-NQj" firstAttribute="leading" secondItem="Y8O-78-ZAB" secondAttribute="trailing" constant="8.5" id="Fef-HM-gpe"/>
+                    <constraint firstItem="Y8O-78-ZAB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="I9W-yi-BWJ"/>
+                    <constraint firstItem="5CC-Ql-gNk" firstAttribute="leading" secondItem="Y8O-78-ZAB" secondAttribute="trailing" constant="8.5" id="QRF-SE-M47"/>
+                    <constraint firstItem="ucc-Oh-NQj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="60" id="RTn-Ce-Qy5"/>
+                    <constraint firstItem="Y8O-78-ZAB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Vkh-tL-tpa"/>
+                    <constraint firstItem="5CC-Ql-gNk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="8" id="oQp-pV-JGM"/>
+                    <constraint firstItem="Y8O-78-ZAB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="wyJ-6p-hfr"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="playerView" destination="Y8O-78-ZAB" id="9sn-nk-gFx"/>
             </connections>
-            <point key="canvasLocation" x="334" y="170"/>
+            <point key="canvasLocation" x="370" y="146"/>
         </tableViewCell>
     </objects>
 </document>

@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Firebase/Firebase.h>
 #import "TableViewCell.h"
 #import "FirstCell.h"
+#import <Firebase/Firebase.h>
 
 @interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
+@property NSString * mainUrl;
 
 @end
