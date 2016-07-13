@@ -15,5 +15,8 @@
 
 @property NSString * mainUrl;
 @property Firebase *myRootRef;
+@property NSArray *dataArray;
+@property NSUInteger count;
+@property (weak, nonatomic) IBOutlet UITableView *dataTableView;
 
 @end

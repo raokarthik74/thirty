@@ -52,6 +52,9 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="600"/>
+                    <connections>
+                        <outlet property="dataTableView" destination="wzB-wr-aeh" id="5DL-f7-vGF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dAS-EA-xPq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -17,7 +17,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.count = 10;
+    self.mainUrl = @"ZlPRefDSrhk";
+    self.dataArray = [NSArray arrayWithObjects:@"ZlPRefDSrhk",@"ZlPRefDSrhk",@"ZlPRefDSrhk", nil];
     self.myRootRef = [[Firebase alloc] initWithUrl:@"https://thirty-8fabc.firebaseio.com/"];
+    [self.myRootRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSDictionary *urlDict = snapshot.value;
+        self.mainUrl = urlDict[@"firsturl"];
+        NSString *myString = urlDict[@"urls"];
+        self.dataArray = [myString componentsSeparatedByString:@","];
+        self.count = [self.dataArray count];
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                [self.dataTableView reloadData];
+            });
+        });
+    }];
+
     }
 
 - (void)didReceiveMemoryWarning {
@@ -34,13 +50,6 @@
         return 1;
     }
     else {
-        [self.myRootRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-            NSLog(@"%@ -> %@", snapshot.key, snapshot.value);
-            NSDictionary *urlDict = snapshot.value;
-            NSArray *remainingURLs = urlDict[@"urls"];
-            NSLog(@"urls %@", urlDict[@"urls"]);
-            self.count =  [remainingURLs count];
-        }];
         return self.count;
     }
 }
@@ -52,13 +61,7 @@
             [tableView registerNib:[UINib nibWithNibName:@"FirstCell" bundle:nil] forCellReuseIdentifier:@"myFirstCell"];
             firstCell = [tableView dequeueReusableCellWithIdentifier:@"myFirstCell"];
         }
-        [self.myRootRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-            NSLog(@"%@ -> %@", snapshot.key, snapshot.value);
-            NSDictionary *urlDict = snapshot.value;
-            self.mainUrl = urlDict[@"firsturl"];
-            NSLog(@"first url %@", self.mainUrl );
-            [firstCell.firstCellView loadWithVideoId:self.mainUrl];
-                    }];
+        [firstCell.firstCellView loadWithVideoId:self.mainUrl];
         return firstCell;
 
     }
@@ -69,20 +72,10 @@
         [tableView registerNib:[UINib nibWithNibName:@"TableViewCell" bundle:nil] forCellReuseIdentifier:@"myCell"];
         cell = [tableView dequeueReusableCellWithIdentifier:@"myCell"];
     }
-        [self.myRootRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-            NSLog(@"%@ -> %@", snapshot.key, snapshot.value);
-            NSDictionary *urlDict = snapshot.value;
-            NSArray *remainingURLs = urlDict[@"urls"];
-            NSLog(@"urls %@", urlDict[@"urls"]);
-            [cell.playerView loadWithVideoId:remainingURLs[indexPath.row]];
-        }];
-    
+        [cell.playerView loadWithVideoId:self.dataArray[indexPath.row]];
         return cell;
     }
 }
-
-
-
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
