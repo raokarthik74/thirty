@@ -19,6 +19,12 @@
     [super viewDidLoad];
     self.count = 10;
     self.mainUrl = @"ZlPRefDSrhk";
+    UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc]
+                                             initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    activityView.center=self.view.center;
+    [activityView startAnimating];
+    [self.view addSubview:activityView];
+    self.dataTableView.hidden = YES;
     self.dataArray = [NSArray arrayWithObjects:@"ZlPRefDSrhk",@"ZlPRefDSrhk",@"ZlPRefDSrhk", nil];
     self.myRootRef = [[Firebase alloc] initWithUrl:@"https://thirty-8fabc.firebaseio.com/"];
     [self.myRootRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
@@ -29,7 +35,9 @@
         self.count = [self.dataArray count];
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
             dispatch_async(dispatch_get_main_queue(), ^(void){
+                self.dataTableView.hidden=NO;
                 [self.dataTableView reloadData];
+                [activityView stopAnimating];
             });
         });
     }];
