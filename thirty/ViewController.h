@@ -10,8 +10,9 @@
 #import "TableViewCell.h"
 #import "FirstCell.h"
 #import <Firebase/Firebase.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
 
 @property NSString * mainUrl;
 @property Firebase *myRootRef;

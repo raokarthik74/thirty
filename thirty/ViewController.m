@@ -14,11 +14,20 @@
 
 @implementation ViewController
 
+CLLocationManager *locationManager;
+CLGeocoder *geoCoder;
+CLPlacemark *placeMark;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.count = 10;
     self.mainUrl = @"ZlPRefDSrhk";
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager requestWhenInUseAuthorization];
+    [locationManager startMonitoringSignificantLocationChanges];
+    [locationManager startUpdatingLocation];
     UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc]
                                              initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     activityView.center=self.view.center;
@@ -41,8 +50,14 @@
             });
         });
     }];
+}
 
-    }
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    CLLocation *currentLocation = [locations lastObject];
+    NSLog(@"last latitude %f", currentLocation.coordinate.latitude);
+    NSLog(@"last longitude %f", currentLocation.coordinate.longitude);
+    [locationManager stopUpdatingLocation];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
