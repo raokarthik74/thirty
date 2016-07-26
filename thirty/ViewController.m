@@ -20,21 +20,31 @@ CLPlacemark *placeMark;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.count = 10;
-    self.mainUrl = @"ZlPRefDSrhk";
+    [self locationCollector];
+    [self fireBaseAuthenticationAndActivityView];
+}
+
+//Method to collect location to analyze for recommendations
+-(void)locationCollector {
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager requestWhenInUseAuthorization];
     [locationManager startMonitoringSignificantLocationChanges];
     [locationManager startUpdatingLocation];
+}
+
+//Method to connect to firebase, fetch urls and load it on table view.
+-(void) fireBaseAuthenticationAndActivityView {
+    self.count = 10;
+    self.mainUrl = @"ZlPRefDSrhk";
+    self.dataArray = [NSArray arrayWithObjects:@"ZlPRefDSrhk",@"ZlPRefDSrhk",@"ZlPRefDSrhk", nil];
     UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc]
                                              initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     activityView.center=self.view.center;
     [activityView startAnimating];
     [self.view addSubview:activityView];
     self.dataTableView.hidden = YES;
-    self.dataArray = [NSArray arrayWithObjects:@"ZlPRefDSrhk",@"ZlPRefDSrhk",@"ZlPRefDSrhk", nil];
     self.myRootRef = [[Firebase alloc] initWithUrl:@"https://thirty-8fabc.firebaseio.com/"];
     [self.myRootRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         NSDictionary *urlDict = snapshot.value;
@@ -52,6 +62,7 @@ CLPlacemark *placeMark;
     }];
 }
 
+//method to fetch current location
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
     CLLocation *currentLocation = [locations lastObject];
     NSLog(@"last latitude %f", currentLocation.coordinate.latitude);
@@ -64,10 +75,12 @@ CLPlacemark *placeMark;
     // Dispose of any resources that can be recreated.
 }
 
+//Number of sections in the view - one for main video and the remaining rows for other rows.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;
 }
 
+//Number of rows in each sections. One row in first section as its large. Multiple rows in the second section
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
         return 1;
@@ -77,6 +90,7 @@ CLPlacemark *placeMark;
     }
 }
 
+//cell description for each cell in both first section and the second. Different custom cells are designed for each cell.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         FirstCell *firstCell = [tableView dequeueReusableCellWithIdentifier:@"myFirstCell" ];
@@ -100,6 +114,7 @@ CLPlacemark *placeMark;
     }
 }
 
+//Matching storyboard height with the programatically allocated height. 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
