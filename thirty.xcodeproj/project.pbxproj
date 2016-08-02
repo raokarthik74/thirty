@@ -16,6 +16,10 @@
 		2521A9F71D3187A200BEDCA2 /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2521A9F41D3187A200BEDCA2 /* libc++.1.tbd */; };
 		2521A9F81D3187A200BEDCA2 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2521A9F51D3187A200BEDCA2 /* libc++.tbd */; };
 		2521A9F91D3187A200BEDCA2 /* libc++abi.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 2521A9F61D3187A200BEDCA2 /* libc++abi.tbd */; };
+		255DD3F61D506457000B4615 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 255DD3F31D506457000B4615 /* FBSDKShareKit.framework */; };
+		255DD3F71D506457000B4615 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 255DD3F41D506457000B4615 /* FBSDKCoreKit.framework */; };
+		255DD3F81D506457000B4615 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 255DD3F51D506457000B4615 /* FBSDKLoginKit.framework */; };
+		255DD3FA1D506923000B4615 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 255DD3F91D506923000B4615 /* Bolts.framework */; };
 		2582D8541D3140610097750A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2582D8531D3140610097750A /* main.m */; };
 		2582D8571D3140610097750A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2582D8561D3140610097750A /* AppDelegate.m */; };
 		2582D85F1D3140610097750A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2582D85E1D3140610097750A /* Assets.xcassets */; };
@@ -59,6 +63,10 @@
 		2521A9F41D3187A200BEDCA2 /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
 		2521A9F51D3187A200BEDCA2 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		2521A9F61D3187A200BEDCA2 /* libc++abi.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++abi.tbd"; path = "usr/lib/libc++abi.tbd"; sourceTree = SDKROOT; };
+		255DD3F31D506457000B4615 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		255DD3F41D506457000B4615 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		255DD3F51D506457000B4615 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		255DD3F91D506923000B4615 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		2582D84F1D3140610097750A /* thirty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = thirty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2582D8531D3140610097750A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2582D8551D3140610097750A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -93,8 +101,12 @@
 			files = (
 				2521A9F71D3187A200BEDCA2 /* libc++.1.tbd in Frameworks */,
 				2521A9F81D3187A200BEDCA2 /* libc++.tbd in Frameworks */,
+				255DD3F81D506457000B4615 /* FBSDKLoginKit.framework in Frameworks */,
+				255DD3F61D506457000B4615 /* FBSDKShareKit.framework in Frameworks */,
+				255DD3F71D506457000B4615 /* FBSDKCoreKit.framework in Frameworks */,
 				2521A9F91D3187A200BEDCA2 /* libc++abi.tbd in Frameworks */,
 				2521A9F21D31879500BEDCA2 /* libicucore.A.tbd in Frameworks */,
+				255DD3FA1D506923000B4615 /* Bolts.framework in Frameworks */,
 				2521A9F31D31879500BEDCA2 /* libicucore.tbd in Frameworks */,
 				2521A9EF1D31878200BEDCA2 /* SystemConfiguration.framework in Frameworks */,
 				2521A9ED1D31877700BEDCA2 /* CFNetwork.framework in Frameworks */,
@@ -128,6 +140,10 @@
 				2521A9F61D3187A200BEDCA2 /* libc++abi.tbd */,
 				2521A9F01D31879500BEDCA2 /* libicucore.A.tbd */,
 				2521A9F11D31879500BEDCA2 /* libicucore.tbd */,
+				255DD3F91D506923000B4615 /* Bolts.framework */,
+				255DD3F31D506457000B4615 /* FBSDKShareKit.framework */,
+				255DD3F41D506457000B4615 /* FBSDKCoreKit.framework */,
+				255DD3F51D506457000B4615 /* FBSDKLoginKit.framework */,
 				2521A9EE1D31878200BEDCA2 /* SystemConfiguration.framework */,
 				2521A9EC1D31877700BEDCA2 /* CFNetwork.framework */,
 				2521A9EA1D31877100BEDCA2 /* Security.framework */,
