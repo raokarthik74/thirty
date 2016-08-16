@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import <FBSDKLoginKit/FBSDKLoginKit.h>
+
 
 @interface ViewController ()
 
@@ -21,9 +21,6 @@ CLPlacemark *placeMark;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
-    loginButton.center = self.view.center;
-    [self.view addSubview:loginButton];
     [self locationCollector];
     [self fireBaseAuthenticationAndActivityView];
 }

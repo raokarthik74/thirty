@@ -12,6 +12,7 @@
 #import <Firebase/Firebase.h>
 #import <CoreLocation/CoreLocation.h>
 
+
 @interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
 
 @property NSString * mainUrl;

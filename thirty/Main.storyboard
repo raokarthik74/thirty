@@ -1,11 +1,41 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Kr2-18-Bvq">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="h0g-ge-Vnb">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="AGe-Ug-YLV">
+            <objects>
+                <viewController id="h0g-ge-Vnb" customClass="LoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Vyw-yF-fCZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="Heh-vg-Gfu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7FD-GF-9fk">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rj8-YI-OAj">
+                                <rect key="frame" x="277" y="285" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="buttonClicked:" destination="h0g-ge-Vnb" eventType="touchUpInside" id="mvb-Oz-h1y"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="Kr2-18-Bvq" kind="show" identifier="loginToMainDisplaySegue" action="showDetailViewController:sender:" id="KQX-Yc-EyX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xJB-U7-vw8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-248" y="-421"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="nJl-kJ-RD9">
             <objects>
@@ -26,28 +56,14 @@
                                     <outlet property="delegate" destination="Kr2-18-Bvq" id="FFZ-cC-tmt"/>
                                 </connections>
                             </tableView>
-                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="puJ-Lg-hWE">
-                                <rect key="frame" x="0.0" y="551" width="600" height="49"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="a5e-1n-w2J"/>
-                                </constraints>
-                                <items>
-                                    <tabBarItem systemItem="favorites" id="Skn-da-ZVb"/>
-                                    <tabBarItem systemItem="more" id="5H7-a2-AiP"/>
-                                </items>
-                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="iIf-Wi-8El" firstAttribute="top" secondItem="puJ-Lg-hWE" secondAttribute="bottom" id="5Kv-Ci-kDg"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="puJ-Lg-hWE" secondAttribute="trailing" constant="-20" id="CEe-y5-fR8"/>
-                            <constraint firstItem="wzB-wr-aeh" firstAttribute="leading" secondItem="xeh-ba-JiN" secondAttribute="leadingMargin" constant="-20" id="EQJ-kK-4Lh"/>
-                            <constraint firstItem="puJ-Lg-hWE" firstAttribute="top" secondItem="wzB-wr-aeh" secondAttribute="bottom" id="d9P-lm-DLP"/>
-                            <constraint firstItem="puJ-Lg-hWE" firstAttribute="centerX" secondItem="xeh-ba-JiN" secondAttribute="centerX" id="dl0-mM-cnf"/>
-                            <constraint firstItem="puJ-Lg-hWE" firstAttribute="leading" secondItem="xeh-ba-JiN" secondAttribute="leadingMargin" constant="-20" id="h9z-dy-44d"/>
-                            <constraint firstItem="wzB-wr-aeh" firstAttribute="centerX" secondItem="xeh-ba-JiN" secondAttribute="centerX" id="iSR-bs-MJ1"/>
-                            <constraint firstItem="wzB-wr-aeh" firstAttribute="top" secondItem="aP7-jH-BeS" secondAttribute="bottom" id="suf-w8-cWA"/>
+                            <constraint firstItem="wzB-wr-aeh" firstAttribute="leading" secondItem="xeh-ba-JiN" secondAttribute="leadingMargin" constant="-20" id="44J-L0-xv2"/>
+                            <constraint firstItem="wzB-wr-aeh" firstAttribute="top" secondItem="aP7-jH-BeS" secondAttribute="bottom" id="MfS-NB-Cpo"/>
+                            <constraint firstItem="wzB-wr-aeh" firstAttribute="centerX" secondItem="xeh-ba-JiN" secondAttribute="centerX" id="jaB-4t-5ZX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wzB-wr-aeh" secondAttribute="trailing" constant="-20" id="uek-on-SE7"/>
+                            <constraint firstItem="iIf-Wi-8El" firstAttribute="top" secondItem="wzB-wr-aeh" secondAttribute="bottom" constant="49" id="veE-CF-OLU"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
