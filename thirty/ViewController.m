@@ -15,6 +15,8 @@
 
 @implementation ViewController
 
+
+NSArray* searchResults;
 CLLocationManager *locationManager;
 CLGeocoder *geoCoder;
 CLPlacemark *placeMark;
@@ -46,6 +48,7 @@ CLPlacemark *placeMark;
     [activityView startAnimating];
     [self.view addSubview:activityView];
     self.dataTableView.hidden = YES;
+    [self.dataTableView setContentOffset:CGPointMake(0.0, self.dataTableView.tableHeaderView.frame.size.height) animated:YES];
     self.myRootRef = [[Firebase alloc] initWithUrl:@"https://thirty-8fabc.firebaseio.com/"];
     [self.myRootRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         NSDictionary *urlDict = snapshot.value;
@@ -70,6 +73,7 @@ CLPlacemark *placeMark;
     NSLog(@"last longitude %f", currentLocation.coordinate.longitude);
     [locationManager stopUpdatingLocation];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

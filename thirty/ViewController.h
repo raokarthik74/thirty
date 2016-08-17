@@ -13,7 +13,7 @@
 #import <CoreLocation/CoreLocation.h>
 
 
-@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
+@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, UISearchBarDelegate, UISearchDisplayDelegate, UISearchResultsUpdating>
 
 @property NSString * mainUrl;
 @property Firebase *myRootRef;
