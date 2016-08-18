@@ -21,6 +21,7 @@ CLPlacemark *placeMark;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.isSearch = FALSE;
     self.filteredItems = [[NSMutableArray alloc]init];
     self.searchController = [[UISearchController alloc]initWithSearchResultsController:nil];
     self.searchController.searchResultsUpdater = self;
@@ -78,6 +79,7 @@ CLPlacemark *placeMark;
     NSString *searchString = self.searchController.searchBar.text;
     [self.filteredItems removeAllObjects];
     if (![searchString isEqualToString:@""]) {
+        self.isSearch = TRUE;
         for (NSString* str in self.dataArray) {
             NSLog(@"Str %@", str);
             if ([str isEqualToString:searchString]) {
@@ -88,6 +90,7 @@ CLPlacemark *placeMark;
     }
     else{
         self.displayItems = self.dataArray;
+        self.isSearch = FALSE;
     }
     [self.dataTableView reloadData];
 }
@@ -108,21 +111,27 @@ CLPlacemark *placeMark;
 
 //Number of sections in the view - one for main video and the remaining rows for other rows.
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    if (self.isSearch) {
+        return 1;
+    }
+    else{
+        return 2;
+    }
 }
 
 //Number of rows in each sections. One row in first section as its large. Multiple rows in the second section
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == 0) {
-        return 1;
+    if (!self.isSearch) {
+        if (section == 0) {
+            return 1;
+        }
     }
-    else {
-        return [self.displayItems count];
-    }
+    return [self.displayItems count];
 }
 
 //cell description for each cell in both first section and the second. Different custom cells are designed for each cell.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (!self.isSearch) {
     if (indexPath.section == 0) {
         FirstCell *firstCell = [tableView dequeueReusableCellWithIdentifier:@"myFirstCell" ];
         if (firstCell == nil) {
@@ -131,9 +140,8 @@ CLPlacemark *placeMark;
         }
         [firstCell.firstCellView loadWithVideoId:self.mainUrl];
         return firstCell;
-
     }
-    else {
+    }
     TableViewCell *cell = (TableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"myCell"];
     if (cell == nil)
     {
@@ -142,7 +150,6 @@ CLPlacemark *placeMark;
     }
         [cell.playerView loadWithVideoId:self.displayItems[indexPath.row]];
         return cell;
-    }
 }
 
 
@@ -150,13 +157,12 @@ CLPlacemark *placeMark;
 //Matching storyboard height with the programatically allocated height. 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (!self.isSearch) {
     if (indexPath.section == 0) {
         return 250;
+        }
     }
-    else{
-        return 150;
-    }
-    
+    return 150;
 }
 
 

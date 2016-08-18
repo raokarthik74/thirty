@@ -23,6 +23,7 @@
 @property NSUInteger count;
 @property NSMutableArray* filteredItems;
 @property NSArray* displayItems;
+@property BOOL isSearch;
 @property (weak, nonatomic) IBOutlet UITableView *dataTableView;
 
 @end
