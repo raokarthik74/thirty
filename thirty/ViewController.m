@@ -25,8 +25,10 @@ CLPlacemark *placeMark;
     self.searchController = [[UISearchController alloc]initWithSearchResultsController:nil];
     self.searchController.searchResultsUpdater = self;
     self.searchController.searchBar.delegate = self;
+    self.searchController.dimsBackgroundDuringPresentation = NO;
     [self.searchController.searchBar sizeToFit];
     self.dataTableView.tableHeaderView = self.searchController.searchBar;
+    self.definesPresentationContext = YES;
     [self locationCollector];
     [self fireBaseAuthenticationAndActivityView];
 }
