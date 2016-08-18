@@ -15,14 +15,18 @@
 
 @implementation ViewController
 
-
-NSArray* searchResults;
 CLLocationManager *locationManager;
 CLGeocoder *geoCoder;
 CLPlacemark *placeMark;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.filteredItems = [[NSMutableArray alloc]init];
+    self.searchController = [[UISearchController alloc]initWithSearchResultsController:nil];
+    self.searchController.searchResultsUpdater = self;
+    self.searchController.searchBar.delegate = self;
+    [self.searchController.searchBar sizeToFit];
+    self.dataTableView.tableHeaderView = self.searchController.searchBar;
     [self locationCollector];
     [self fireBaseAuthenticationAndActivityView];
 }
@@ -42,6 +46,7 @@ CLPlacemark *placeMark;
     self.count = 10;
     self.mainUrl = @"ZlPRefDSrhk";
     self.dataArray = [NSArray arrayWithObjects:@"ZlPRefDSrhk",@"ZlPRefDSrhk",@"ZlPRefDSrhk", nil];
+    self.displayItems = self.dataArray;
     UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc]
                                              initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     activityView.center=self.view.center;
@@ -55,6 +60,7 @@ CLPlacemark *placeMark;
         self.mainUrl = urlDict[@"firsturl"];
         NSString *myString = urlDict[@"urls"];
         self.dataArray = [myString componentsSeparatedByString:@","];
+        self.displayItems = self.dataArray;
         self.count = [self.dataArray count];
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
             dispatch_async(dispatch_get_main_queue(), ^(void){
@@ -64,6 +70,24 @@ CLPlacemark *placeMark;
             });
         });
     }];
+}
+
+-(void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+    NSString *searchString = self.searchController.searchBar.text;
+    [self.filteredItems removeAllObjects];
+    if (![searchString isEqualToString:@""]) {
+        for (NSString* str in self.dataArray) {
+            NSLog(@"Str %@", str);
+            if ([str isEqualToString:searchString]) {
+                [self.filteredItems addObject:str];
+            }
+        }
+        self.displayItems = self.filteredItems;
+    }
+    else{
+        self.displayItems = self.dataArray;
+    }
+    [self.dataTableView reloadData];
 }
 
 //method to fetch current location
@@ -91,7 +115,7 @@ CLPlacemark *placeMark;
         return 1;
     }
     else {
-        return self.count;
+        return [self.displayItems count];
     }
 }
 
@@ -114,10 +138,12 @@ CLPlacemark *placeMark;
         [tableView registerNib:[UINib nibWithNibName:@"TableViewCell" bundle:nil] forCellReuseIdentifier:@"myCell"];
         cell = [tableView dequeueReusableCellWithIdentifier:@"myCell"];
     }
-        [cell.playerView loadWithVideoId:self.dataArray[indexPath.row]];
+        [cell.playerView loadWithVideoId:self.displayItems[indexPath.row]];
         return cell;
     }
 }
+
+
 
 //Matching storyboard height with the programatically allocated height. 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

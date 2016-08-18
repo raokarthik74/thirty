@@ -16,9 +16,13 @@
 @interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, UISearchBarDelegate, UISearchDisplayDelegate, UISearchResultsUpdating>
 
 @property NSString * mainUrl;
+@property (nonatomic, strong) UISearchController * searchController;
 @property Firebase *myRootRef;
 @property NSArray *dataArray;
+@property NSArray *titleArray;
 @property NSUInteger count;
+@property NSMutableArray* filteredItems;
+@property NSArray* displayItems;
 @property (weak, nonatomic) IBOutlet UITableView *dataTableView;
 
 @end
