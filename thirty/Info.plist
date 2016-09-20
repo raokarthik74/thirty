@@ -27,11 +27,11 @@
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>I need Location</string>
+	<string>Location is required to recommend videos that you may like</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>I need Location</string>
+	<string>Location is required to recommend videos that you may like</string>
 	<key>privacy - location usage description</key>
-	<string>I need Location</string>
+	<string>Location is required to recommend videos that you may like</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
@@ -49,25 +49,25 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-    <key>CFBundleURLTypes</key>
-    <array>
-        <dict>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>fb313531739037212</string>
-            </array>
-        </dict>
-    </array>
-    <key>FacebookAppID</key>
-    <string>313531739037212</string>
-    <key>FacebookDisplayName</key>
-    <string>thirty</string>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>fbapi</string>
-        <string>fb-messenger-api</string>
-        <string>fbauth2</string>
-        <string>fbshareextension</string>
-    </array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb313531739037212</string>
+			</array>
+		</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>313531739037212</string>
+	<key>FacebookDisplayName</key>
+	<string>thirty</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
 </dict>
 </plist>

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -12,11 +13,10 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="149.5"/>
+                <frame key="frameInset" width="320" height="150"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucc-Oh-NQj">
-                        <rect key="frame" x="150" y="68" width="154" height="53"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="53" id="1x9-T2-9Am"/>
                             <constraint firstAttribute="width" constant="154" id="LGf-gI-3RV"/>
@@ -26,7 +26,6 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Video title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5CC-Ql-gNk">
-                        <rect key="frame" x="150" y="16" width="154" height="70"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="154" id="Hp6-hG-aWE"/>
                             <constraint firstAttribute="height" constant="70" id="P2A-OG-bJz"/>
@@ -36,8 +35,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y8O-78-ZAB" customClass="YTPlayerView">
-                        <rect key="frame" x="8" y="8" width="133.5" height="133.5"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="134" id="NFV-54-QsY"/>
                             <constraint firstAttribute="height" constant="134" id="TP8-dy-HO4"/>
@@ -59,8 +57,10 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="playerView" destination="Y8O-78-ZAB" id="9sn-nk-gFx"/>
+                <outlet property="videoSubtitle" destination="ucc-Oh-NQj" id="TM0-lk-YJi"/>
+                <outlet property="videoTitle" destination="5CC-Ql-gNk" id="zTB-0W-D96"/>
             </connections>
-            <point key="canvasLocation" x="370" y="146"/>
+            <point key="canvasLocation" x="-294" y="29"/>
         </tableViewCell>
     </objects>
 </document>

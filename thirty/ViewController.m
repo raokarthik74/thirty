@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 
-
 @interface ViewController ()
 
 @end
@@ -21,7 +20,15 @@ CLPlacemark *placeMark;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self locationCollector];
+    [self searchBarConfiguration];
+    [self fireBaseAuthenticationAndActivityView];
+}
+
+//Method to configure the searchBar
+-(void)searchBarConfiguration{
     self.isSearch = FALSE;
+    self.isFirstSearch= YES;
     self.filteredItems = [[NSMutableArray alloc]init];
     self.searchController = [[UISearchController alloc]initWithSearchResultsController:nil];
     self.searchController.searchResultsUpdater = self;
@@ -30,10 +37,7 @@ CLPlacemark *placeMark;
     [self.searchController.searchBar sizeToFit];
     self.dataTableView.tableHeaderView = self.searchController.searchBar;
     self.definesPresentationContext = YES;
-    [self locationCollector];
-    [self fireBaseAuthenticationAndActivityView];
 }
-
 //Method to collect location to analyze for recommendations
 -(void)locationCollector {
     locationManager = [[CLLocationManager alloc] init];
@@ -61,8 +65,18 @@ CLPlacemark *placeMark;
     [self.myRootRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         NSDictionary *urlDict = snapshot.value;
         self.mainUrl = urlDict[@"firsturl"];
-        NSString *myString = urlDict[@"urls"];
-        self.dataArray = [myString componentsSeparatedByString:@","];
+        self.urlDictionaryWithTag = urlDict[@"urlAndTags"];
+        NSArray *listOfUrls = [self.urlDictionaryWithTag allKeys];
+        self.allUrls = [[NSMutableArray alloc] init];
+        self.tagToUrlDictionary = [[NSMutableDictionary alloc]init];
+        for(int i=0; i<listOfUrls.count; i++){
+            NSArray* individualDataArray = self.urlDictionaryWithTag[listOfUrls[i]];
+            for (int j=0; j<individualDataArray.count; j++) {
+                [self.tagToUrlDictionary setValue:[NSNumber numberWithInt:i] forKey:individualDataArray[j]];
+                [self.allUrls addObject:individualDataArray[j]];
+            }
+        }
+        self.dataArray = listOfUrls;
         self.displayItems = self.dataArray;
         self.count = [self.dataArray count];
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
@@ -75,24 +89,43 @@ CLPlacemark *placeMark;
     }];
 }
 
+//Method which gets triggered whenever there is a text input in the searchBar
 -(void)updateSearchResultsForSearchController:(UISearchController *)searchController {
     NSString *searchString = self.searchController.searchBar.text;
     [self.filteredItems removeAllObjects];
     if (![searchString isEqualToString:@""]) {
         self.isSearch = TRUE;
-        for (NSString* str in self.dataArray) {
-            NSLog(@"Str %@", str);
-            if ([str isEqualToString:searchString]) {
-                [self.filteredItems addObject:str];
-            }
+        NSPredicate* resultPredicate = [NSPredicate predicateWithFormat:@"SELF contains[c] %@", searchString];
+        NSArray *filarr = [self.allUrls filteredArrayUsingPredicate:resultPredicate];
+        NSLog(@"predicate data %@",filarr);
+        NSMutableArray *displayTags = [[NSMutableArray alloc]init];
+        NSMutableArray *ifUrlEnteredOrNot = [[NSMutableArray alloc]initWithCapacity:self.dataArray.count];
+        for (int i=0; i<self.dataArray.count; i++) {
+            [ifUrlEnteredOrNot insertObject:[NSNumber numberWithBool:NO] atIndex:i];
         }
-        self.displayItems = self.filteredItems;
+        for (id eachElement in filarr) {
+            NSLog(@"url adding object data %@",[self.urlDictionaryWithTag allKeysForObject:eachElement]);
+            int value =[self.tagToUrlDictionary[eachElement] intValue];
+                if (![[ifUrlEnteredOrNot objectAtIndex:value]boolValue]) {
+                    [ifUrlEnteredOrNot insertObject:[NSNumber numberWithBool:YES] atIndex:value];
+                    [displayTags addObject:self.dataArray[value]];
+                }
+             }
+        self.displayItems = displayTags;
+        [self.dataTableView reloadData];
     }
     else{
         self.displayItems = self.dataArray;
         self.isSearch = FALSE;
+        if (self.isFirstSearch) {
+            self.isFirstSearch = NO;
+        }
+        else{
+          [self.dataTableView reloadData];
+        }
+        
     }
-    [self.dataTableView reloadData];
+   
 }
 
 //method to fetch current location
@@ -107,6 +140,14 @@ CLPlacemark *placeMark;
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    UITouch* touch = [[event allTouches]anyObject];
+    if ([self.searchController.searchBar isFirstResponder] && [touch view] != self.searchController.searchBar) {
+        [self.searchController.searchBar endEditing:true];
+    }
+    [super touchesBegan:touches withEvent:event];
 }
 
 //Number of sections in the view - one for main video and the remaining rows for other rows.
@@ -144,12 +185,15 @@ CLPlacemark *placeMark;
     }
     TableViewCell *cell = (TableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"myCell"];
     if (cell == nil)
-    {
+        {
         [tableView registerNib:[UINib nibWithNibName:@"TableViewCell" bundle:nil] forCellReuseIdentifier:@"myCell"];
         cell = [tableView dequeueReusableCellWithIdentifier:@"myCell"];
-    }
-        [cell.playerView loadWithVideoId:self.displayItems[indexPath.row]];
-        return cell;
+        }
+    [cell.playerView loadWithVideoId:self.displayItems[indexPath.row]];
+    NSArray* data = self.urlDictionaryWithTag[self.displayItems[indexPath.row]];
+    [cell.videoTitle setText: [data objectAtIndex:0]];
+    [cell.videoSubtitle setText: [data objectAtIndex:1]];
+    return cell;
 }
 
 

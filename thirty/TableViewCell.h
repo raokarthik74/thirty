@@ -12,5 +12,8 @@
 @interface TableViewCell : UITableViewCell
 
 @property(nonatomic, strong)IBOutlet YTPlayerView *playerView;
+@property (weak, nonatomic) IBOutlet UILabel *videoTitle;
+@property (weak, nonatomic) IBOutlet UILabel *videoSubtitle;
+
 
 @end

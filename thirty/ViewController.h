@@ -20,10 +20,14 @@
 @property Firebase *myRootRef;
 @property NSArray *dataArray;
 @property NSArray *titleArray;
+@property NSMutableArray *allUrls;
+@property NSMutableDictionary *tagToUrlDictionary;
 @property NSUInteger count;
+@property Boolean isFirstSearch;
 @property NSMutableArray* filteredItems;
 @property NSArray* displayItems;
 @property BOOL isSearch;
 @property (weak, nonatomic) IBOutlet UITableView *dataTableView;
+@property NSMutableDictionary *urlDictionaryWithTag;
 
 @end
