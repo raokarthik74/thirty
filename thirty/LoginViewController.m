@@ -30,9 +30,12 @@
     self.activityView.center=self.view.center;
     [self.activityView startAnimating];
     [self.view addSubview:self.activityView];
+    [self segueToNextView];
+    
 }
 
 -(void)viewDidAppear:(BOOL)animated {
+    
 //    if ([FBSDKAccessToken currentAccessToken]) {
 //        NSLog(@"login successful");
 //
@@ -67,45 +70,30 @@
     [p seekToTime:kCMTimeZero];
 }
 
+-(void)segueToNextView{
+    self.myRootRef = [[Firebase alloc] initWithUrl:@"https://thirty-8fabc.firebaseio.com/"];
+    [self.myRootRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        self.urlDict = snapshot.value;
+        NSLog(@"inside firebase snapshot");
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                NSLog(@"inside dispatch");
+                [self.activityView stopAnimating];
+                [self performSegueWithIdentifier:@"loginToMainDisplaySegue" sender:self];
+            });
+        });
+    }];
+
+    
+}
+
 //Method to connect to firebase, fetch urls and load it on table view.
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"loginToMainDisplaySegue"]) {
+        NSLog(@"segue is triggered");
         ViewController *destinationViewController = segue.destinationViewController;
-        destinationViewController.dataTableView.hidden = YES;
-        [destinationViewController.dataTableView setContentOffset:CGPointMake(0.0, destinationViewController.dataTableView.tableHeaderView.frame.size.height) animated:YES];
-        destinationViewController.myRootRef = [[Firebase alloc] initWithUrl:@"https://thirty-8fabc.firebaseio.com/"];
-        [destinationViewController.myRootRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-            NSDictionary *urlDict = snapshot.value;
-            destinationViewController.mainUrl = urlDict[@"firsturl"];
-            destinationViewController.urlDictionaryWithTag = urlDict[@"urlAndTags"];
-            NSArray *listOfUrls = [destinationViewController.urlDictionaryWithTag allKeys];
-            destinationViewController.allUrls = [[NSMutableArray alloc] init];
-            destinationViewController.tagToUrlDictionary = [[NSMutableDictionary alloc]init];
-            for(int i=0; i<listOfUrls.count; i++){
-                NSArray* individualDataArray = destinationViewController.urlDictionaryWithTag[listOfUrls[i]];
-                for (int j=0; j<individualDataArray.count; j++) {
-                    if (j == individualDataArray.count-1) {
-                        [destinationViewController.locationData addObject:individualDataArray[j]];
-                    }
-                    else{
-                        [destinationViewController.tagToUrlDictionary setValue:[NSNumber numberWithInt:i] forKey:individualDataArray[j]];
-                        [destinationViewController.allUrls addObject:individualDataArray[j]];
-                    }
-                }
-            }
-            destinationViewController.dataArray = listOfUrls;
-            destinationViewController.displayItems = destinationViewController.dataArray;
-            destinationViewController.count = [destinationViewController.dataArray count];
-            dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-                dispatch_async(dispatch_get_main_queue(), ^(void){
-                    destinationViewController.dataTableView.hidden=NO;
-                    [destinationViewController.dataTableView reloadData];
-                    [self.activityView stopAnimating];
-                    [self performSegueWithIdentifier:@"loginToMainDisplaySegue" sender:self];
-                });
-            });
-        }];
-    }
+        destinationViewController.urlDict = self.urlDict;
+        }
 }
 
 

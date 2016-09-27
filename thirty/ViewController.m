@@ -54,6 +54,28 @@ CLPlacemark *placeMark;
     self.mainUrl = @"ZlPRefDSrhk";
     self.dataArray = [NSArray arrayWithObjects:@"ZlPRefDSrhk",@"ZlPRefDSrhk",@"ZlPRefDSrhk", nil];
     self.displayItems = self.dataArray;
+    [self.dataTableView setContentOffset:CGPointMake(0.0, self.dataTableView.tableHeaderView.frame.size.height) animated:YES];
+    self.mainUrl = self.urlDict[@"firsturl"];
+    self.urlDictionaryWithTag = self.urlDict[@"urlAndTags"];
+    NSArray *listOfUrls = [self.urlDictionaryWithTag allKeys];
+    self.allUrls = [[NSMutableArray alloc] init];
+    self.tagToUrlDictionary = [[NSMutableDictionary alloc]init];
+    for(int i=0; i<listOfUrls.count; i++){
+        NSArray* individualDataArray = self.urlDictionaryWithTag[listOfUrls[i]];
+        for (int j=0; j<individualDataArray.count; j++) {
+            if (j == individualDataArray.count-1) {
+                [self.locationData addObject:individualDataArray[j]];
+            }
+            else{
+                [self.tagToUrlDictionary setValue:[NSNumber numberWithInt:i] forKey:individualDataArray[j]];
+                [self.allUrls addObject:individualDataArray[j]];
+            }
+        }
+    }
+    self.dataArray = listOfUrls;
+    self.displayItems = self.dataArray;
+    self.count = [self.dataArray count];
+
     }
 
 //Method which gets triggered whenever there is a text input in the searchBar

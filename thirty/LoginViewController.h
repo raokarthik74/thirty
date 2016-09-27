@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <Firebase/Firebase.h>
 
 @interface LoginViewController : UIViewController
+
+@property Firebase *myRootRef;
+@property NSDictionary *urlDict;
 
 @end

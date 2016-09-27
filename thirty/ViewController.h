@@ -30,5 +30,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *dataTableView;
 @property NSMutableDictionary *urlDictionaryWithTag;
 @property NSMutableArray* locationData;
+@property NSDictionary *urlDict;
 
 @end
