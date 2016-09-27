@@ -48,46 +48,13 @@ CLPlacemark *placeMark;
     [locationManager startUpdatingLocation];
 }
 
-//Method to connect to firebase, fetch urls and load it on table view.
+//backup method to initialize table view
 -(void) fireBaseAuthenticationAndActivityView {
     self.count = 10;
     self.mainUrl = @"ZlPRefDSrhk";
     self.dataArray = [NSArray arrayWithObjects:@"ZlPRefDSrhk",@"ZlPRefDSrhk",@"ZlPRefDSrhk", nil];
     self.displayItems = self.dataArray;
-    UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc]
-                                             initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    activityView.center=self.view.center;
-    [activityView startAnimating];
-    [self.view addSubview:activityView];
-    self.dataTableView.hidden = YES;
-    [self.dataTableView setContentOffset:CGPointMake(0.0, self.dataTableView.tableHeaderView.frame.size.height) animated:YES];
-    self.myRootRef = [[Firebase alloc] initWithUrl:@"https://thirty-8fabc.firebaseio.com/"];
-    [self.myRootRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        NSDictionary *urlDict = snapshot.value;
-        self.mainUrl = urlDict[@"firsturl"];
-        self.urlDictionaryWithTag = urlDict[@"urlAndTags"];
-        NSArray *listOfUrls = [self.urlDictionaryWithTag allKeys];
-        self.allUrls = [[NSMutableArray alloc] init];
-        self.tagToUrlDictionary = [[NSMutableDictionary alloc]init];
-        for(int i=0; i<listOfUrls.count; i++){
-            NSArray* individualDataArray = self.urlDictionaryWithTag[listOfUrls[i]];
-            for (int j=0; j<individualDataArray.count; j++) {
-                [self.tagToUrlDictionary setValue:[NSNumber numberWithInt:i] forKey:individualDataArray[j]];
-                [self.allUrls addObject:individualDataArray[j]];
-            }
-        }
-        self.dataArray = listOfUrls;
-        self.displayItems = self.dataArray;
-        self.count = [self.dataArray count];
-        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
-            dispatch_async(dispatch_get_main_queue(), ^(void){
-                self.dataTableView.hidden=NO;
-                [self.dataTableView reloadData];
-                [activityView stopAnimating];
-            });
-        });
-    }];
-}
+    }
 
 //Method which gets triggered whenever there is a text input in the searchBar
 -(void)updateSearchResultsForSearchController:(UISearchController *)searchController {

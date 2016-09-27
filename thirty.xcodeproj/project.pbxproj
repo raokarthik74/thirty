@@ -33,6 +33,7 @@
 		2582D8921D3140820097750A /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2582D88C1D3140820097750A /* YTPlayerView.m */; };
 		2582D8931D3140820097750A /* Assets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2582D88D1D3140820097750A /* Assets.bundle */; };
 		259EE94C1D62730600D27F5F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 259EE94B1D62730600D27F5F /* LoginViewController.m */; };
+		25A71DEF1D9A286F008F3071 /* video.mov in Resources */ = {isa = PBXBuildFile; fileRef = 25A71DEE1D9A286F008F3071 /* video.mov */; };
 		25FB2D161D337F580095C40D /* FirstCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25FB2D141D337F580095C40D /* FirstCell.m */; };
 		25FB2D171D337F580095C40D /* FirstCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25FB2D151D337F580095C40D /* FirstCell.xib */; };
 /* End PBXBuildFile section */
@@ -92,6 +93,7 @@
 		2582D88D1D3140820097750A /* Assets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Assets.bundle; sourceTree = "<group>"; };
 		259EE94A1D62730600D27F5F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		259EE94B1D62730600D27F5F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		25A71DEE1D9A286F008F3071 /* video.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = video.mov; sourceTree = "<group>"; };
 		25FB2D131D337F580095C40D /* FirstCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstCell.h; sourceTree = "<group>"; };
 		25FB2D141D337F580095C40D /* FirstCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstCell.m; sourceTree = "<group>"; };
 		25FB2D151D337F580095C40D /* FirstCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstCell.xib; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				2582D88A1D3140820097750A /* TableViewCell.xib */,
 				2582D88B1D3140820097750A /* YTPlayerView.h */,
 				2582D88C1D3140820097750A /* YTPlayerView.m */,
+				25A71DEE1D9A286F008F3071 /* video.mov */,
 				2582D88D1D3140820097750A /* Assets.bundle */,
 				2582D85E1D3140610097750A /* Assets.xcassets */,
 				2582D8601D3140610097750A /* LaunchScreen.storyboard */,
@@ -327,6 +330,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25A71DEF1D9A286F008F3071 /* video.mov in Resources */,
 				2582D8931D3140820097750A /* Assets.bundle in Resources */,
 				2582D88E1D3140820097750A /* Main.storyboard in Resources */,
 				2582D8911D3140820097750A /* TableViewCell.xib in Resources */,
