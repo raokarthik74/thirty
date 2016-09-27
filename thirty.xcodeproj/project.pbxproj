@@ -34,6 +34,7 @@
 		2582D8931D3140820097750A /* Assets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 2582D88D1D3140820097750A /* Assets.bundle */; };
 		259EE94C1D62730600D27F5F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 259EE94B1D62730600D27F5F /* LoginViewController.m */; };
 		25A71DEF1D9A286F008F3071 /* video.mov in Resources */ = {isa = PBXBuildFile; fileRef = 25A71DEE1D9A286F008F3071 /* video.mov */; };
+		25A71DF51D9A429E008F3071 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A71DF41D9A429E008F3071 /* TabBarController.m */; };
 		25FB2D161D337F580095C40D /* FirstCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25FB2D141D337F580095C40D /* FirstCell.m */; };
 		25FB2D171D337F580095C40D /* FirstCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25FB2D151D337F580095C40D /* FirstCell.xib */; };
 /* End PBXBuildFile section */
@@ -94,6 +95,8 @@
 		259EE94A1D62730600D27F5F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		259EE94B1D62730600D27F5F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		25A71DEE1D9A286F008F3071 /* video.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = video.mov; sourceTree = "<group>"; };
+		25A71DF31D9A429E008F3071 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
+		25A71DF41D9A429E008F3071 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		25FB2D131D337F580095C40D /* FirstCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstCell.h; sourceTree = "<group>"; };
 		25FB2D141D337F580095C40D /* FirstCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstCell.m; sourceTree = "<group>"; };
 		25FB2D151D337F580095C40D /* FirstCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstCell.xib; sourceTree = "<group>"; };
@@ -180,6 +183,8 @@
 				2582D8871D3140820097750A /* ViewController.m */,
 				259EE94A1D62730600D27F5F /* LoginViewController.h */,
 				259EE94B1D62730600D27F5F /* LoginViewController.m */,
+				25A71DF31D9A429E008F3071 /* TabBarController.h */,
+				25A71DF41D9A429E008F3071 /* TabBarController.m */,
 				25FB2D131D337F580095C40D /* FirstCell.h */,
 				25FB2D141D337F580095C40D /* FirstCell.m */,
 				25FB2D151D337F580095C40D /* FirstCell.xib */,
@@ -366,6 +371,7 @@
 				25FB2D161D337F580095C40D /* FirstCell.m in Sources */,
 				2582D8571D3140610097750A /* AppDelegate.m in Sources */,
 				259EE94C1D62730600D27F5F /* LoginViewController.m in Sources */,
+				25A71DF51D9A429E008F3071 /* TabBarController.m in Sources */,
 				2582D8921D3140820097750A /* YTPlayerView.m in Sources */,
 				2582D8541D3140610097750A /* main.m in Sources */,
 			);

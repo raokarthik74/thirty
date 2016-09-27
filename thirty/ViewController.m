@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "TabBarController.h"
 
 @interface ViewController ()
 
@@ -55,6 +56,8 @@ CLPlacemark *placeMark;
     self.dataArray = [NSArray arrayWithObjects:@"ZlPRefDSrhk",@"ZlPRefDSrhk",@"ZlPRefDSrhk", nil];
     self.displayItems = self.dataArray;
     [self.dataTableView setContentOffset:CGPointMake(0.0, self.dataTableView.tableHeaderView.frame.size.height) animated:YES];
+    TabBarController *tabBarController = (TabBarController*)self.tabBarController;
+    self.urlDict = tabBarController.urlDict;
     self.mainUrl = self.urlDict[@"firsturl"];
     self.urlDictionaryWithTag = self.urlDict[@"urlAndTags"];
     NSArray *listOfUrls = [self.urlDictionaryWithTag allKeys];

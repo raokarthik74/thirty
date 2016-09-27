@@ -7,7 +7,8 @@
 //
 
 #import "LoginViewController.h"
-#import "ViewController.h"
+#import "TabBarController.h"
+
 @import MediaPlayer;
 @import AVKit;
 @import AVFoundation;
@@ -74,10 +75,8 @@
     self.myRootRef = [[Firebase alloc] initWithUrl:@"https://thirty-8fabc.firebaseio.com/"];
     [self.myRootRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         self.urlDict = snapshot.value;
-        NSLog(@"inside firebase snapshot");
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
             dispatch_async(dispatch_get_main_queue(), ^(void){
-                NSLog(@"inside dispatch");
                 [self.activityView stopAnimating];
                 [self performSegueWithIdentifier:@"loginToMainDisplaySegue" sender:self];
             });
@@ -90,8 +89,7 @@
 //Method to connect to firebase, fetch urls and load it on table view.
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"loginToMainDisplaySegue"]) {
-        NSLog(@"segue is triggered");
-        ViewController *destinationViewController = segue.destinationViewController;
+        TabBarController *destinationViewController = segue.destinationViewController;
         destinationViewController.urlDict = self.urlDict;
         }
 }
