@@ -8,8 +8,11 @@
 
 #import "ViewController.h"
 #import "TabBarController.h"
+#import <MapKit/MapKit.h>
 
 @interface ViewController ()
+
+@property NSMutableArray* pointArray;
 
 @end
 
@@ -21,10 +24,14 @@ CLPlacemark *placeMark;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.pointArray = [[NSMutableArray alloc]init];
+    
     [self locationCollector];
     [self searchBarConfiguration];
     [self fireBaseAuthenticationAndActivityView];
 }
+
 
 //Method to configure the searchBar
 -(void)searchBarConfiguration{
@@ -63,11 +70,18 @@ CLPlacemark *placeMark;
     NSArray *listOfUrls = [self.urlDictionaryWithTag allKeys];
     self.allUrls = [[NSMutableArray alloc] init];
     self.tagToUrlDictionary = [[NSMutableDictionary alloc]init];
+    self.tagToUrlAndPointDictionary = [[NSMutableDictionary alloc]init];
     for(int i=0; i<listOfUrls.count; i++){
         NSArray* individualDataArray = self.urlDictionaryWithTag[listOfUrls[i]];
         for (int j=0; j<individualDataArray.count; j++) {
             if (j == individualDataArray.count-1) {
-                [self.locationData addObject:individualDataArray[j]];
+                NSArray *locationArray = [individualDataArray[j] componentsSeparatedByString:@","];
+                NSLog(@"lattitude %@,  longitude %@",locationArray[0],  locationArray[1]);
+                CLLocation* location = [[CLLocation alloc]initWithLatitude:[locationArray[0]doubleValue] longitude:[locationArray[1]doubleValue]];
+                NSLog(@"latitude %f, longitude %f", location.coordinate.latitude, location.coordinate.longitude);
+                [self.tagToUrlAndPointDictionary setObject:location forKey:listOfUrls[i]];
+                NSLog(@"latitude %f, longitude %f", location.coordinate.latitude, location.coordinate.longitude);
+                NSLog(@"current key %@", listOfUrls[i]);
             }
             else{
                 [self.tagToUrlDictionary setValue:[NSNumber numberWithInt:i] forKey:individualDataArray[j]];
@@ -75,6 +89,9 @@ CLPlacemark *placeMark;
             }
         }
     }
+    NSLog(@"Tag and URL Dictionary %@", self.tagToUrlAndPointDictionary);
+    tabBarController.tagToUrlAndPointDictionary  = self.tagToUrlAndPointDictionary;
+    tabBarController.urlDictionaryWithTag = self.urlDictionaryWithTag;
     self.dataArray = listOfUrls;
     self.displayItems = self.dataArray;
     self.count = [self.dataArray count];
@@ -122,12 +139,13 @@ CLPlacemark *placeMark;
 
 //method to fetch current location
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
-    CLLocation *currentLocation = [locations lastObject];
-    NSLog(@"last latitude %f", currentLocation.coordinate.latitude);
-    NSLog(@"last longitude %f", currentLocation.coordinate.longitude);
+    self.currentLocation = [locations lastObject];
+    TabBarController *tabBarController = (TabBarController*)self.tabBarController;
+    tabBarController.currentLocation = self.currentLocation;
+    NSLog(@"last latitude %f", self.currentLocation.coordinate.latitude);
+    NSLog(@"last longitude %f", self.currentLocation.coordinate.longitude);
     [locationManager stopUpdatingLocation];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

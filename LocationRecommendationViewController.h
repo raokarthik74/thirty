@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import "MinimumBoundingRectangle.h"
 
-@interface LocationRecommendationViewController : UIViewController
+@interface LocationRecommendationViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *locationRecommendationTable;
 
 @end

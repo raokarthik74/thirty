@@ -23,6 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"in login view controller");
     FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
     loginButton.center = self.view.center;
     [self videoBackground];
@@ -49,6 +50,7 @@
 }
 
 - (void)videoBackground {
+    NSLog(@"Video background being called");
     NSURL *videoURL = [[NSBundle mainBundle] URLForResource:@"video" withExtension:@"mov"];
     self.avplayer = [AVPlayer playerWithURL:videoURL];
     AVPlayerViewController *controller = [[AVPlayerViewController alloc] init];
@@ -72,18 +74,20 @@
 }
 
 -(void)segueToNextView{
+    NSLog(@"checking for segue");
     self.myRootRef = [[Firebase alloc] initWithUrl:@"https://thirty-8fabc.firebaseio.com/"];
     [self.myRootRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         self.urlDict = snapshot.value;
+        NSLog(@"inside snapshot");
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void){
             dispatch_async(dispatch_get_main_queue(), ^(void){
                 [self.activityView stopAnimating];
                 [self performSegueWithIdentifier:@"loginToMainDisplaySegue" sender:self];
             });
         });
-    }];
-
-    
+        } withCancelBlock:^(NSError *error) {
+        NSLog(@"%@", error.description);
+        }];
 }
 
 //Method to connect to firebase, fetch urls and load it on table view.

@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface TabBarController : UITabBarController
 
 @property NSDictionary* urlDict;
+@property NSMutableDictionary* tagToUrlAndPointDictionary ;
+@property CLLocation* currentLocation;
+@property NSMutableDictionary *urlDictionaryWithTag;
 
 @end

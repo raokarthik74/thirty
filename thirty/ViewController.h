@@ -22,6 +22,7 @@
 @property NSArray *titleArray;
 @property NSMutableArray *allUrls;
 @property NSMutableDictionary *tagToUrlDictionary;
+@property (nonatomic, strong) NSMutableDictionary *tagToUrlAndPointDictionary;
 @property NSUInteger count;
 @property Boolean isFirstSearch;
 @property NSMutableArray* filteredItems;
@@ -29,7 +30,6 @@
 @property BOOL isSearch;
 @property (weak, nonatomic) IBOutlet UITableView *dataTableView;
 @property NSMutableDictionary *urlDictionaryWithTag;
-@property NSMutableArray* locationData;
 @property NSDictionary *urlDict;
-
+@property CLLocation* currentLocation;
 @end
