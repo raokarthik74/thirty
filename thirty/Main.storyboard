@@ -30,7 +30,7 @@
             </objects>
             <point key="canvasLocation" x="-652" y="-625"/>
         </scene>
-        <!--View Controller-->
+        <!--Home-->
         <scene sceneID="nJl-kJ-RD9">
             <objects>
                 <viewController id="Kr2-18-Bvq" customClass="ViewController" sceneMemberID="viewController">
@@ -59,7 +59,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="wzB-wr-aeh" secondAttribute="trailing" constant="-20" id="y89-4f-s1I"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" tag="1" systemItem="more" id="BwN-fF-cbK"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Home" image="Home Filled-30" id="BwN-fF-cbK"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="600"/>
                     <connections>
@@ -79,7 +79,7 @@
             </objects>
             <point key="canvasLocation" x="1314" y="-625"/>
         </scene>
-        <!--Item-->
+        <!--Recommendations-->
         <scene sceneID="xww-K3-2Th">
             <objects>
                 <viewController id="9iC-Nd-ERU" customClass="LocationRecommendationViewController" sceneMemberID="viewController">
@@ -99,7 +99,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="xWE-xt-Jnr"/>
+                    <tabBarItem key="tabBarItem" title="Recommendations" image="Geo-fence Filled-30" id="xWE-xt-Jnr"/>
                     <connections>
                         <outlet property="locationRecommendationTable" destination="ccj-5H-adh" id="ebV-W9-MRu"/>
                     </connections>
@@ -128,4 +128,8 @@
             <point key="canvasLocation" x="338" y="-625"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Geo-fence Filled-30" width="30" height="30"/>
+        <image name="Home Filled-30" width="30" height="30"/>
+    </resources>
 </document>
