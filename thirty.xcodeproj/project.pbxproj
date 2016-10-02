@@ -37,8 +37,8 @@
 		25A71DF51D9A429E008F3071 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A71DF41D9A429E008F3071 /* TabBarController.m */; };
 		25FB2D161D337F580095C40D /* FirstCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 25FB2D141D337F580095C40D /* FirstCell.m */; };
 		25FB2D171D337F580095C40D /* FirstCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25FB2D151D337F580095C40D /* FirstCell.xib */; };
-		25FF9AC41D9E253F00D71705 /* LocationRecommendationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25FF9AC31D9E253F00D71705 /* LocationRecommendationViewController.m */; };
 		25FF9AC71D9E34CE00D71705 /* MinimumBoundingRectangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 25FF9AC61D9E34CE00D71705 /* MinimumBoundingRectangle.m */; };
+		25FF9ACD1DA0A6E000D71705 /* LocationRecommendationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25FF9ACC1DA0A6E000D71705 /* LocationRecommendationViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,10 +102,10 @@
 		25FB2D131D337F580095C40D /* FirstCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstCell.h; sourceTree = "<group>"; };
 		25FB2D141D337F580095C40D /* FirstCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstCell.m; sourceTree = "<group>"; };
 		25FB2D151D337F580095C40D /* FirstCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstCell.xib; sourceTree = "<group>"; };
-		25FF9AC21D9E253F00D71705 /* LocationRecommendationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationRecommendationViewController.h; path = ../LocationRecommendationViewController.h; sourceTree = "<group>"; };
-		25FF9AC31D9E253F00D71705 /* LocationRecommendationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationRecommendationViewController.m; path = ../LocationRecommendationViewController.m; sourceTree = "<group>"; };
 		25FF9AC51D9E34CE00D71705 /* MinimumBoundingRectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MinimumBoundingRectangle.h; sourceTree = "<group>"; };
 		25FF9AC61D9E34CE00D71705 /* MinimumBoundingRectangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MinimumBoundingRectangle.m; sourceTree = "<group>"; };
+		25FF9ACB1DA0A6E000D71705 /* LocationRecommendationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationRecommendationViewController.h; sourceTree = "<group>"; };
+		25FF9ACC1DA0A6E000D71705 /* LocationRecommendationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationRecommendationViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,8 +182,8 @@
 		2582D8511D3140610097750A /* thirty */ = {
 			isa = PBXGroup;
 			children = (
-				25FF9AC21D9E253F00D71705 /* LocationRecommendationViewController.h */,
-				25FF9AC31D9E253F00D71705 /* LocationRecommendationViewController.m */,
+				25FF9ACB1DA0A6E000D71705 /* LocationRecommendationViewController.h */,
+				25FF9ACC1DA0A6E000D71705 /* LocationRecommendationViewController.m */,
 				2582D8551D3140610097750A /* AppDelegate.h */,
 				2582D8561D3140610097750A /* AppDelegate.m */,
 				2582D8851D3140820097750A /* Main.storyboard */,
@@ -376,7 +376,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25FF9AC41D9E253F00D71705 /* LocationRecommendationViewController.m in Sources */,
+				25FF9ACD1DA0A6E000D71705 /* LocationRecommendationViewController.m in Sources */,
 				2582D88F1D3140820097750A /* ViewController.m in Sources */,
 				2582D8901D3140820097750A /* TableViewCell.m in Sources */,
 				25FB2D161D337F580095C40D /* FirstCell.m in Sources */,

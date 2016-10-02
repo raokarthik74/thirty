@@ -79,7 +79,7 @@ CLPlacemark *placeMark;
                 NSLog(@"lattitude %@,  longitude %@",locationArray[0],  locationArray[1]);
                 CLLocation* location = [[CLLocation alloc]initWithLatitude:[locationArray[0]doubleValue] longitude:[locationArray[1]doubleValue]];
                 NSLog(@"latitude %f, longitude %f", location.coordinate.latitude, location.coordinate.longitude);
-                [self.tagToUrlAndPointDictionary setObject:location forKey:listOfUrls[i]];
+                [self.tagToUrlAndPointDictionary setObject:listOfUrls[i] forKey:location];
                 NSLog(@"latitude %f, longitude %f", location.coordinate.latitude, location.coordinate.longitude);
                 NSLog(@"current key %@", listOfUrls[i]);
             }

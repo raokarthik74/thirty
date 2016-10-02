@@ -35,20 +35,20 @@
     self.locationRecommendationTable.dataSource = self;
     self.currentLocation = tabBarController.currentLocation;
     self.urlDictionaryWithTag = tabBarController.urlDictionaryWithTag;
-    NSLog(@"all keys %@ ", [self.tagToUrlAndPointDictionary  allKeys]);
-    self.pointArray = [self.tagToUrlAndPointDictionary allValues];
+    NSLog(@"all keys %@ ", [self.tagToUrlAndPointDictionary  allValues]);
+    self.pointArray = [self.tagToUrlAndPointDictionary allKeys];
     NSLog(@"point array %@ ", self.pointArray);
     self.nearestNeighbourDistanceWithPointKeys = [[NSMutableDictionary alloc] init];
     for(id point in self.pointArray){
         NSLog(@"current point %@", point);
         NSLog(@"current location lattitude %f and longitude %f", self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.latitude);
         double distance = [self.currentLocation distanceFromLocation:point];
-        [self.nearestNeighbourDistanceWithPointKeys setObject:[NSNumber numberWithDouble:distance] forKey:point];
+        [self.nearestNeighbourDistanceWithPointKeys setObject:point forKey:[NSNumber numberWithDouble:distance]];
         NSLog(@"distance %f", distance);
     }
     NSLog(@"nearest Neighbours keys%@", [self.nearestNeighbourDistanceWithPointKeys allKeys]);
     NSLog(@"nearest Neighbours values%@", [self.nearestNeighbourDistanceWithPointKeys allValues]);
-    self.sortedListOfPoints = [self.nearestNeighbourDistanceWithPointKeys allValues];
+    self.sortedListOfPoints = [self.nearestNeighbourDistanceWithPointKeys allKeys];
     NSLog(@"sorted list of points %@", self.sortedListOfPoints);
     self.sortedListOfPoints = [self.sortedListOfPoints sortedArrayUsingSelector:@selector(compare:)];
     NSLog(@"sorted list of points %@", self.sortedListOfPoints);
@@ -75,18 +75,12 @@
     }
     NSLog(@"number of entries %lu", (unsigned long)[self.sortedListOfPoints count]);
     NSLog(@"current row element %@", [self.sortedListOfPoints objectAtIndex:indexPath.row]);
-    NSArray* allKeys = [self.nearestNeighbourDistanceWithPointKeys allKeysForObject:[self.sortedListOfPoints objectAtIndex:indexPath.row]];
-    NSLog(@"number of keys %lu", (unsigned long)[allKeys count]);
-    NSLog(@"key at 0 index %@", [allKeys objectAtIndex:0]);
-    CLLocation *temp =[allKeys objectAtIndex:0];
-    NSArray* allKeysOfURLs = [self.tagToUrlAndPointDictionary allKeysForObject:temp];
-    NSLog(@"number of url keys %@", allKeysOfURLs);
-    
-//    NSLog(@"key at 0 url index %@", [allKeysOfURLs objectAtIndex:0]);
-//    [cell.playerView loadWithVideoId:allKeysOfURLs[0]];
-//    NSArray* data = self.urlDictionaryWithTag[allKeysOfURLs[0]];
-//    [cell.videoTitle setText: [data objectAtIndex:0]];
-//    [cell.videoSubtitle setText: [data objectAtIndex:1]];
+    CLLocation* object = [self.nearestNeighbourDistanceWithPointKeys objectForKey:[self.sortedListOfPoints objectAtIndex:indexPath.row]] ;
+    NSString* key = [self.tagToUrlAndPointDictionary objectForKey:object];
+    [cell.playerView loadWithVideoId:key];
+    NSArray* data = self.urlDictionaryWithTag[key];
+    [cell.videoTitle setText: [data objectAtIndex:0]];
+    [cell.videoSubtitle setText: [data objectAtIndex:1]];
     return cell;
 }
 
